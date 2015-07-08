@@ -1,0 +1,29 @@
+sudo: false
+language: node_js
+node_js:
+  - '0.10'
+before_script:
+  - 'gem update --system'
+  - 'gem install compass --version "=1.0.1"'
+  - 'npm install -g bower grunt-cli'
+  - 'bower install'
+
+script:
+  - 'grunt build'
+
+after_success:
+  - ls
+  
+
+before_deploy: "zip -r temp /home/travis/build/larasulfo/public/.tmp"
+
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key: "c7aaed536272686e4f3fb26fdd97b4a8d8db3bff"
+  file: temp.zip
+    
+  
+  on:
+    tags: true
+    repo: larasulfo/public
