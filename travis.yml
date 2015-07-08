@@ -20,7 +20,7 @@ before_deploy: "zip -r temp /home/travis/build/larasulfo/public/.tmp"
 deploy:
   skip_cleanup: true
   provider: releases
-  api_key: "c7aaed536272686e4f3fb26fdd97b4a8d8db3bff"
+  api_key: "get auth key"
   file: temp.zip
     
   
